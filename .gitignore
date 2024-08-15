@@ -1,0 +1,4 @@
+# Ignorar a pasta venv
+venv/
+__pycache__/
+config.py
