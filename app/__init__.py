@@ -10,7 +10,7 @@ def create_app():
     db.init_app(app)
     
 
-    CORS(app, origins=['http://localhost:4200'])
+    CORS(app, origins=['http://localhost:4200', 'http://localhost:52266'])
 
     with app.app_context():
         # Import blueprints
