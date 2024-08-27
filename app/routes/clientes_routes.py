@@ -112,9 +112,11 @@ def criar_clientes(user_code):
 @clientes_routes.route('/obter-cliente-por-cpf', methods=['GET'])
 @token_required
 def obter_cliente_por_cpf(user_code):
-    data = request.get_json()
+    cpf = request.args.get('cpf')
     
-    cpf = data['cpf']
+    if not cpf:
+        return jsonify({'message': 'CPF é obrigatório'}), 400
+    
     cliente = obter_clientes_por_cpf(cpf, None)
     
     if cliente:
@@ -125,9 +127,11 @@ def obter_cliente_por_cpf(user_code):
 @clientes_routes.route('/obter-cliente-por-cnpj', methods=['GET'])
 @token_required
 def obter_cliente_por_cnpj(user_code):
-    data = request.get_json()
+    cnpj = request.args.get
     
-    cnpj = data['cnpj']
+    if not cnpj:
+        return jsonify({'message': 'CNPJ é obrigatório'}), 400
+    
     cliente = obter_clientes_por_cnpj(cnpj, None)
     
     if cliente:
